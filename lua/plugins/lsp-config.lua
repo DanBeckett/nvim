@@ -10,7 +10,8 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"lua_ls",
+                    "cssls",
+                    "lua_ls",
 					"tsserver",
 					"intelephense",
 				},
@@ -25,11 +26,17 @@ return {
 			lspconfig.lua_ls.setup({
                 capabilities = capabilities
             })
+            lspconfig.cssls.setup({
+                capabilities = capabilities
+            })
 			lspconfig.tsserver.setup({
                 capabilities = capabilities
             })
 			lspconfig.intelephense.setup({
                 capabilities = capabilities,
+                init_options = {
+                    licenceKey = "008VM7QZVR7PN10"
+                },
                 on_attach = function()
                     --print('Intelephense attached')
                 end
