@@ -35,7 +35,7 @@ return {
 			lspconfig.intelephense.setup({
                 capabilities = capabilities,
                 init_options = {
-                    licenceKey = "008VM7QZVR7PN10"
+                    licenceKey = os.getenv("intelephense_key")
                 },
                 on_attach = function()
                     --print('Intelephense attached')

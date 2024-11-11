@@ -2,7 +2,8 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	name = "treesitter",
 	build = ":TSUpdate",
-	config = function()
+	event = { "BufReadPre", "BufNewFile" },
+    config = function()
 		local config = require("nvim-treesitter.configs")
 		config.setup({
 			auto_install = { enable = true },
@@ -15,8 +16,13 @@ return {
 				"phpdoc",
 				"css",
 				"html",
-				"vim",
+				"twig",
+                "vim",
 				"vimdoc",
+                "dockerfile",
+                "gitignore",
+                "markdown",
+                "markdown_inline"
 			},
 			highlight = { enable = true },
 			indent = { enable = true },
