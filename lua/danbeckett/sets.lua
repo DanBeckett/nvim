@@ -25,3 +25,4 @@ vim.opt.incsearch = true
 vim.opt.wrap = false
 vim.opt.scrolloff = 8
 
+vim.opt.cc = "85"
