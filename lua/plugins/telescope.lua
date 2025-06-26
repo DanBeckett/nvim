@@ -11,9 +11,15 @@ return {
             local builtin = require("telescope.builtin")
             vim.keymap.set("n", "<leader>ff", builtin.find_files, {}) -- fuzzy files
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, {}) -- fuzzy grep
---            vim.keymap.set("n", "<leader>fe", builtin.live_grep, {
---                additional_args = "--no-ignore"
---            }) -- fuzzy grep including vendor
+            vim.keymap.set("n", "<leader>fa", function()
+                builtin.live_grep({
+                    additional_args = function()
+                        return {
+                            "--no-ignore"
+                        }
+                    end
+                })
+            end) -- fuzzy grep no ignore
             vim.keymap.set("n", "<C-p>", builtin.git_files, {}) -- fuzzy files only git repo
             vim.keymap.set("n", "<leader>ps", function()
                 builtin.grep_string({ search = vim.fn.input("Grep > ") })
