@@ -1,7 +1,10 @@
 {
+  "CopilotChat.nvim": { "branch": "main", "commit": "5df0b668d23c05c173f6bc79bb19642215b8b66a" },
   "LuaSnip": { "branch": "master", "commit": "b152822e1a4bafb6bdf11a16cc26525cbd95ee00" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
+  "copilot.vim": { "branch": "release", "commit": "cd7f01009fb7b30e22840cadc4faad88b05c6eef" },
+  "dashboard-nvim": { "branch": "master", "commit": "0f99b3cd66b9fde13926724c67c6e1abeb48e07d" },
   "evergarden": { "branch": "mega", "commit": "9f18f8b5f20882774ded04e768179e49b9339af0" },
   "friendly-snippets": { "branch": "main", "commit": "d5f74ce4dfdd82848f3f4eac65fe6e29ac5df4c2" },
   "harpoon": { "branch": "harpoon2", "commit": "2e25a13fa4c0ada39ce3ecfd5f75d61b896d3306" },
