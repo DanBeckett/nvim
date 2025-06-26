@@ -18,3 +18,28 @@ vim.opt.rtp:prepend(lazypath)
 -- PLUGINS INITIALISATION
 
 require("lazy").setup("plugins")
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.blade = {
+  install_info = {
+    url = "https://github.com/EmranMR/tree-sitter-blade",
+    files = {"src/parser.c"},
+    branch = "main",
+  },
+  filetype = "blade"
+}
+
+-- EXAMPLE SETTING UP AN AUTOCMD TO ONLY FIRE IN WORDPRESS THEME
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "php",
+--   callback = function()
+--     local file = vim.fn.expand("%:p")
+--     if file:match("/wp%-content/themes/.+/") then
+--       vim.keymap.set("n", "<leader>ac", function()
+--         AddClassAttribute()
+--       end, { buffer = true, desc = "Add class attribute to current HTML element" })
+--     end
+--   end,
+-- })
+
