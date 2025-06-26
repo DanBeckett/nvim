@@ -20,3 +20,16 @@ vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
+-- Keep cursor centered when joining lines or scrolling
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Indent selection and keep it selected
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
+
+-- Copy file path to clipboard
+vim.keymap.set("n", "FY", function()
+  vim.fn.setreg("f", vim.fn.expand("%:p"))
+end, { desc = "Copy file path to clipboard" })
