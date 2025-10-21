@@ -13,6 +13,9 @@ return {
 			},
 		})
 		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+        vim.keymap.set("n", "<leader>dl", function()
+            vim.diagnostic.open_float(nil, { focusable = false, scope = "line" })
+        end, { desc = "View line diagnostics" })
 	end,
 	dependencies = {
 		"nvimtools/none-ls-extras.nvim",

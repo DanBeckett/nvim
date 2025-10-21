@@ -24,6 +24,9 @@ return {
             vim.keymap.set("n", "<leader>ps", function()
                 builtin.grep_string({ search = vim.fn.input("Grep > ") })
             end) -- project search
+            vim.keymap.set("n", "<leader>df", function()
+                require("telescope.builtin").diagnostics({bufnr = 0})
+            end, { desc = "Diagnostics for current buffer" }) -- diagnostics for current buffer
         end,
     },
     {
