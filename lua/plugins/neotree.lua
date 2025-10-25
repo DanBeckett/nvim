@@ -8,6 +8,27 @@ return {
 		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 	},
 	config = function()
+        require("neo-tree").setup({
+			sources = {
+				"filesystem",
+				"buffers",
+				"git_status",
+				"document_symbols", 
+			},
+			document_symbols = {
+				follow_cursor = true,
+				kinds = { "Class", "Function", "Method", "Variable", "Constant" },
+			},
+			-- source_selector = {
+			--	winbar = true,
+			--	sources = {
+			--		{ source = "filesystem", display_name = "  Files " },
+			--		{ source = "buffers", display_name = "  Buffers " },
+			--		{ source = "git_status", display_name = "  Git " },
+			--		{ source = "document_symbols", display_name = "  Symbols " },
+			--	},
+			-- },
+		})
 		-- vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {}) -- default
 		vim.keymap.set("n", "<leader>pf", ":Neotree toggle filesystem left <CR>", {}) -- project browser / project bar
 		vim.keymap.set("n", "<leader><Tab>", ":Neotree toggle filesystem reveal float<CR>", {})

@@ -29,16 +29,6 @@ parser_config.blade = {
   filetype = "blade"
 }
 
--- LSP CONFIGURATION, MIGRATE AWAY FROM NVIM-LSPCONFIG
-
---[[ local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-vim.lsp.config('cssls', {
-    capabilities = capabilities,
-    filetypes = { "css", "scss", "less" },
-}) ]]--
-
 -- EXAMPLE SETTING UP AN AUTOCMD TO ONLY FIRE IN WORDPRESS THEME
 
 -- vim.api.nvim_create_autocmd("FileType", {
