@@ -24,59 +24,72 @@ vim.lsp.config('twiggy_language_server', {
     --end,
 })
 
---vim.lsp.config('intelephense', {
---    capabilities = capabilities,
---    init_options = {
---        licenceKey = os.getenv("intelephense_key")
---    },
---    settings = {
---        intelephense = {
---            inlayHints = {
---                parameterHints = true,
---                parameterTypes = true,
---                variableTypes = true,
---                propertyTypes = true,
---                functionLikeReturnTypes = true,
---                enumMemberValues = true
---            }
---        }
---    },
---    --on_attach = function()
---        --print("Intelephense LSP started")
---    --end,
---})
-
-vim.lsp.config('phpactor', {
+vim.lsp.config('intelephense', {
     capabilities = capabilities,
-    cmd = { 'phpactor', 'language-server' },
-    filetypes = { 'php' },
-    root_dir = vim.fs.root(0, { 'composer.json', '.git' }),
+    init_options = {
+        licenceKey = os.getenv("intelephense_key")
+    },
     settings = {
-        phpactor = {
-            --inlayHints = {
-                --enable = true,
-                --params = true,
-            --}
+        intelephense = {
+            inlayHints = {
+                parameterNames = {
+                    enabled = "all" 
+                },
+                parameterTypes = {
+                    enabled = true
+                },
+                functionReturnTypes = {
+                    enabled = true
+                },
+                variableTypes = {
+                    enabled = true
+                }
+            }
         }
     },
-    init_options = {
-        ['language_server_worse_reflection.inlay_hints.enable'] = true,
-        ['language_server_worse_reflection.inlay_hints.params'] = true,
-        ['language_server_worse_reflection.inlay_hints.types'] = false,
-    },
     on_attach = function(client, bufnr)
-        -- Enable inlay hints if supported
+        print("Intelephense LSP started")
         if client.server_capabilities.inlayHintProvider then
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
             vim.keymap.set("n", "<leader>ih", function()
                 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                vim.notify("inlay hints: " .. tostring(vim.lsp.inlay_hint.is_enabled()))
             end)
         end
-
-        -- Optional: Print confirmation
-        print("phpactor LSP started")
     end,
 })
+
+--vim.lsp.config('phpactor', {
+--    capabilities = capabilities,
+--    cmd = { 'phpactor', 'language-server' },
+--    filetypes = { 'php' },
+--    root_dir = vim.fs.root(0, { 'composer.json', '.git' }),
+--    settings = {
+--        phpactor = {
+--            --inlayHints = {
+--                --enable = true,
+--                --params = true,
+--            --}
+--        }
+--    },
+--    init_options = {
+--        ['language_server_worse_reflection.inlay_hints.enable'] = true,
+--        ['language_server_worse_reflection.inlay_hints.params'] = true,
+--        ['language_server_worse_reflection.inlay_hints.types'] = false,
+--    },
+--    on_attach = function(client, bufnr)
+--        -- Enable inlay hints if supported
+--        if client.server_capabilities.inlayHintProvider then
+--            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+--            vim.keymap.set("n", "<leader>ih", function()
+--                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+--            end)
+--        end
+--
+--        -- Optional: Print confirmation
+--        print("phpactor LSP started")
+--    end,
+--})
 
 vim.lsp.enable('eslint', {
     capabilities = capabilities,
